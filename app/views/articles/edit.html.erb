@@ -1,4 +1,14 @@
-<h1>Editing Article</h1>
+<h1>Edit article id: <%= @article.id %></h1>
+
+<% if @article.errors.any? %>
+<h2>The following error prevents the article to be saved </h2>
+  <ul>
+  <% @article.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
 
 <%= render 'form', article: @article %>
 

@@ -10,6 +10,12 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    #
+    # id = params[:id].to_i
+    # id = id -8
+    # @article = Article.find(id)
+     # @article = Article.find(params[:id])
+
   end
 
   # GET /articles/new
@@ -30,8 +36,12 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
 
-        format.html { redirect_to @article, notice: 'YESSSS !Article was successfully created.' }
-        format.json { render :show, status: :created, location: @article }
+         format.html { redirect_to @article , notice: 'YESSSS !Article was successfully created.' }
+          # format.html { redirect_to "https://www.google.com" , notice: 'YESSSS !Article was successfully created.' }
+         # flash[:notice] = "HOPPALA"
+        # format.html { redirect_to new_article_path, notice: 'YESSSS !Article was successfully created.' }
+        # format.json { render :show, status: :created, location: @article }
+        format.json { render :action => "show", status: :created, location: @article }
       else
         format.html { render :new }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -58,7 +68,8 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+      # format.html { redirect_to articles_url }
+       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
