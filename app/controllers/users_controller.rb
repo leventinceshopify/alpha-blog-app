@@ -5,7 +5,10 @@ class UsersController < ApplicationController
   # GET /articles.json
 
   def index
-    @users = User.all
+    # @users = User.all
+    # paginate
+    @users = User.paginate(page: params[:page], per_page: 2)
+
   end
 
   # GET /articles/1
@@ -16,6 +19,7 @@ class UsersController < ApplicationController
     # id = id -8
     # @article = Article.find(id)
      # @article = Article.find(params[:id])
+     @user_articles = @user.articles.paginate(page: params[:page], per_page: 1)
 
   end
 
