@@ -16,7 +16,10 @@
 
   <tbody>
     <% @articles.each do |article| %>
+
+
       <tr>
+        <td>Created by: <%=article.user.username if article.user %>, <%=time_ago_in_words(article.created_at)%>  ago </td>
           <td><%= article.id %></td>
         <td><%= article.title %></td>
         <td><%= article.description %></td>
