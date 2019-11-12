@@ -18,5 +18,7 @@
     <!-- all other views in the app get served in this area  -->
 
     <%= yield %>
+    <%= debug(params) if Rails.env.development? %>
+
   </body>
 </html>
