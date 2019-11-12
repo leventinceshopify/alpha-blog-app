@@ -1,15 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
+<h1>All Alpha Bloggers</h1>
 
 <table>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>User Name</th>
+      <th>Created: </th>
+      <th>  </th>
+      <th>Number of Articles </th>
+      <th>User Name </th>
       <!-- <th colspan="3"></th> -->
 
-      <th>Email</th>
+      <th>Email </th>
       <!-- <th colspan="3"></th> -->
     </tr>
   </thead>
@@ -19,8 +21,9 @@
 
 
       <tr>
-        <td>Created at:  <%=time_ago_in_words(user.created_at) if user.created_at%>  ago </td>
-          <td><%= user.id %></td>
+        <td> <%=time_ago_in_words(user.created_at) if user.created_at%>  ago </td>
+        <td><%= gravatar_for user %></td>
+        <td><%= user.articles.count %> article</td>
         <td><%= user.username %></td>
         <td><%= user.email %></td>
         <td><%= link_to 'Show', user %></td>
